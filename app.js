@@ -1,6 +1,7 @@
 // * external imports
 const express = require("express");
 const dotenv = require("dotenv");
+const morgan = require("morgan");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
@@ -29,6 +30,9 @@ app.use(express.urlencoded({ extended: true }));
 
 //  * set view engine
 app.set("view engine", "ejs");
+
+// * set morgan
+app.use(morgan("dev"));
 
 // * set static folder
 app.use(express.static(path.join(__dirname, "public")));
